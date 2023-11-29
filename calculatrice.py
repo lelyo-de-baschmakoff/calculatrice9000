@@ -23,7 +23,7 @@ def calculatrice():
                 continue
 
             print(f"Résultat : {resultat}")
-            historique.append((nombre1, operation, nombre2, resultat))  # Ajout de l'opération à l'historique
+            historique.append((nombre1, operation, nombre2, resultat))
             
             continuer = input("Voulez-vous continuer ? (Oui/Non) : ")
             if continuer.lower() != 'oui':
@@ -34,12 +34,10 @@ def calculatrice():
         except Exception as e:
             print(f"Une erreur s'est produite : {e}")
 
-    # Affichage de l'historique des opérations
     print("\nHistorique des opérations :")
     for i, operation in enumerate(historique, 1):
         print(f"{i}. {operation[0]} {operation[1]} {operation[2]} = {operation[3]}")
 
-    # Option pour effacer l'historique
     effacer = input("Voulez-vous effacer l'historique ? (Oui/Non) : ")
     if effacer.lower() == 'oui':
         historique = []
