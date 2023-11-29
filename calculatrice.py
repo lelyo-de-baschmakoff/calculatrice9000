@@ -4,8 +4,8 @@ def calculatrice():
     while True:
         try:
             nombre1 = float(input("Entrez le premier nombre : "))
-            nombre2 = float(input("Entrez le deuxième nombre : "))
             operation = input("Entrez l'opération (+, -, *, /) : ")
+            nombre2 = float(input("Entrez le deuxième nombre : "))
 
             if operation == '+':
                 resultat = nombre1 + nombre2
@@ -24,8 +24,16 @@ def calculatrice():
 
             print(f"Résultat : {resultat}")
             historique.append((nombre1, operation, nombre2, resultat))
-            
-            continuer = input("Voulez-vous continuer ? (Oui/Non) : ")
+
+            print("\nHistorique des opérations :")
+            for i, operation in enumerate(historique, 1):
+                print(f"{i}. {operation[0]} {operation[1]} {operation[2]} = {operation[3]}")
+
+            effacer = input("Voulez-vous effacer l'historique ? (Oui/Non) : ")
+            if effacer.lower() == 'oui':
+                historique = []       
+
+            continuer = input("Voulez-vous effectuer un autre calcule ? (Oui/Non) : ")
             if continuer.lower() != 'oui':
                 break
 
@@ -33,14 +41,6 @@ def calculatrice():
             print("Erreur : Veuillez entrer un nombre valide.")
         except Exception as e:
             print(f"Une erreur s'est produite : {e}")
-
-    print("\nHistorique des opérations :")
-    for i, operation in enumerate(historique, 1):
-        print(f"{i}. {operation[0]} {operation[1]} {operation[2]} = {operation[3]}")
-
-    effacer = input("Voulez-vous effacer l'historique ? (Oui/Non) : ")
-    if effacer.lower() == 'oui':
-        historique = []
 
 if __name__ == "__main__":
     calculatrice()
